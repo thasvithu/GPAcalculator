@@ -8,7 +8,6 @@ function calc(){
     var course4 = document.getElementById("course4").value; 
     var course5 = document.getElementById("course5").value;
 
-    var TotalGradeCredit = 0;
     var GPA;
 
     //get grade value
@@ -91,21 +90,25 @@ function calc(){
     document.getElementById("disCredit4").innerHTML = credit4;
     document.getElementById("disCredit5").innerHTML = credit5;    
 
+    var mulcredit1 = (credit1 * gradeValueFromArray[0]).toFixed(2);
+    var mulcredit2 = (credit2 * gradeValueFromArray[1]).toFixed(2);
+    var mulcredit3 = (credit3 * gradeValueFromArray[2]).toFixed(2);
+    var mulcredit4 = (credit4 * gradeValueFromArray[3]).toFixed(2);
+    var mulcredit5 = (credit5 * gradeValueFromArray[4]).toFixed(2);
+
     //dispaly grade point
-    document.getElementById("disGP1").innerHTML = (credit1 * gradeValueFromArray[0]).toFixed(2);
-    document.getElementById("disGP2").innerHTML = (credit2 * gradeValueFromArray[1]).toFixed(2);
-    document.getElementById("disGP3").innerHTML = (credit3 * gradeValueFromArray[2]).toFixed(2);
-    document.getElementById("disGP4").innerHTML = (credit4 * gradeValueFromArray[3]).toFixed(2);
-    document.getElementById("disGP5").innerHTML = (credit5 * gradeValueFromArray[4]).toFixed(2);    
+    document.getElementById("disGP1").innerHTML = mulcredit1;
+    document.getElementById("disGP2").innerHTML = mulcredit2;
+    document.getElementById("disGP3").innerHTML = mulcredit3;
+    document.getElementById("disGP4").innerHTML = mulcredit4;
+    document.getElementById("disGP5").innerHTML = mulcredit5;    
   
-   
-    for(var i=0; i<5; i++){
-        TotalGradeCredit += gradeValueFromArray[i];
-    }
+   var totalMulCredit = parseFloat(mulcredit1) + parseFloat(mulcredit2) + parseFloat(mulcredit3) + parseFloat(mulcredit4) + parseFloat(mulcredit5);
 
-    document.getElementById("totalgradepoints").innerHTML = TotalGradeCredit.toFixed(2);
 
-    GPA = (TotalGradeCredit / TotalCredit).toFixed(2);
+    document.getElementById("totalgradepoints").innerHTML = totalMulCredit.toFixed(2);
+
+    GPA = (totalMulCredit / TotalCredit).toFixed(2);
     document.getElementById("GPA").innerHTML = GPA;
 }
 
